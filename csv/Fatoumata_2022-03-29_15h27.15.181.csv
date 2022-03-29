@@ -1,0 +1,7 @@
+id_candidate, no_trial, wrong_yes, level, ans_candidate, good_ans, reaction_time, time_stamp
+Fatoumata, 0, 0, 3, a, True, 0.27, 6.24
+Fatoumata, 1, 0, 2, a, True, 0.26, 7.74
+Fatoumata, 2, 0, 1, a, True, 0.05, 9.09
+Fatoumata, 3, 0, 7, a, True, 0.18, 10.88
+Fatoumata, 4, 0, 5, a, True, 0.02, 12.52
+Fatoumata, 5, 0, 7, a, True, 0.23, 14.24

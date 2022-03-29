@@ -4,12 +4,11 @@ from PIL import Image
 from psychopy import visual, gui, data, core
 from screeninfo import get_monitors
 
-from images_dict import dic
 from task_template import TaskTemplate
 
 
 def size(no_trial, j):
-    image = Image.open(f'img/diff/img_{no_trial}_{j}.png')
+    image = Image.open(f'img/img_{no_trial}_{j}.png')
     imgwidth, imgheight = image.size
 
     if imgwidth > get_monitors()[0].width:
@@ -25,11 +24,11 @@ def size(no_trial, j):
 
 
 def get_nb_diff(no_trial):
-    return len([filename for filename in os.listdir('img/diff') if filename.startswith(f"img_{no_trial}_")]) - 1
+    return len([filename for filename in os.listdir('img') if filename.startswith(f"img_{no_trial}_")]) - 1
 
 
 class SevenDiff(TaskTemplate):
-    trials = len(dic)
+    trials = 100
     yes_key_name = "p"
     yes_key_code = "p"
     no_key_code = "a"
@@ -53,7 +52,7 @@ class SevenDiff(TaskTemplate):
         print(j)
         result = 0
         while True:
-            self.create_visual_image(image=f'img/diff/img_{no_trial}_{j}.png', size=size(no_trial, j)).draw()
+            self.create_visual_image(image=f'img/img_{no_trial}_{j}.png', size=size(no_trial, j)).draw()
             self.win.flip()
             core.wait(1)
             self.create_visual_text("Voyez-vous une différence entre ces deux images ? \n\n Non / Oui").draw()
