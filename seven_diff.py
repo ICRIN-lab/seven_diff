@@ -38,9 +38,9 @@ class SevenDiff(TaskTemplate):
     next = f"Pour passer à l'instruction suivante, appuyez sur la touche {yes_key_name}"
 
     instructions = [
-        f"Dans ce mini-jeu, appuyez sur la touche '{yes_key_name}' pour répondre oui ou pour selectionner la réponse "
+        f"Dans cette tâche cognitive, appuyez sur la touche '{yes_key_name}' pour répondre oui ou pour selectionner la réponse "
         f"de droite \n\n appuyez sur la touche '{no_key_name}' pour répondre non ou pour selectionner la réponse de "
-        f"gauche"]
+        f"gauche", "N'appuyez sur les touches que lorsqu'on vous le demande",f"Placez vos index sur les touches '{no_key_name}' et '{yes_key_name}'"]
 
     csv_headers = ['id_candidate', 'no_trial', 'wrong_yes', 'level', 'ans_candidate',
                    'good_ans', 'reaction_time', 'time_stamp']
