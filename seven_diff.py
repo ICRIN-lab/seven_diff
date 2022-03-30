@@ -3,7 +3,6 @@ import time, os
 from PIL import Image
 from psychopy import visual, gui, data, core
 from screeninfo import get_monitors
-
 from task_template import TaskTemplate
 
 
@@ -54,11 +53,11 @@ class SevenDiff(TaskTemplate):
         while True:
             self.create_visual_image(image=f'img/img_{no_trial}_{j}.png', size=size(no_trial, j)).draw()
             self.win.flip()
-            core.wait(1)
+            core.wait(5)
             self.create_visual_text("Voyez-vous une différence entre ces deux images ? \n\n Non / Oui").draw()
             self.win.flip()
             resp, rt = self.get_response_with_time()
-            self.update_csv(self.participant, no_trial, wrong_yes, j, resp, j != 0, round(rt, 2),
+            self.update_csv(self.participant, no_trial, wrong_yes, j, resp, j == 0, round(rt, 2),
                             round(time.time() - exp_start_timestamp, 2))
             if resp == self.yes_key_code and j == 0:
                 if result == 1:
