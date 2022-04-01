@@ -53,7 +53,7 @@ class SevenDiff(TaskTemplate):
         while True:
             self.create_visual_image(image=f'img/img_{no_trial}_{j}.png', size=size(no_trial, j)).draw()
             self.win.flip()
-            core.wait(5)
+            core.wait(8)
             self.create_visual_text("Voyez-vous une différence entre ces deux images ? \n\n Non / Oui").draw()
             self.win.flip()
             resp, rt = self.get_response_with_time()
