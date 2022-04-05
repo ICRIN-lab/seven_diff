@@ -3,3 +3,4 @@ task_template.py
 .DS_Store
 img/.DS_Store
 __pycache__/
+csv/*.csv
