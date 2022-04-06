@@ -38,9 +38,9 @@ class SevenDiff(TaskTemplate):
     next = f"Pour passer à l'instruction suivante, appuyez sur la touche {yes_key_name}"
 
     instructions = [
-        f"Dans cette tâche cognitive, appuyez sur la touche '{yes_key_name}' pour répondre oui ou pour selectionner la réponse "
-        f"de droite \n\n appuyez sur la touche '{no_key_name}' pour répondre non ou pour selectionner la réponse de "
-        f"gauche", "N'appuyez sur les touches que lorsqu'on vous le demande",f"Placez vos index sur les touches '{no_key_name}' et '{yes_key_name}'"]
+        f"Dans cette tâche cognitive, il vous est demandé de repérer les différences entre deux images. \n\n Appuyez sur la touche '{yes_key_name}' pour répondre oui ou pour selectionner la réponse "
+        f"de droite. \n\n Appuyez sur la touche '{no_key_name}' pour répondre non ou pour selectionner la réponse de "
+        f"gauche.", "N'appuyez sur les touches que lorsqu'on vous le demande.",f"Placez vos index sur les touches '{no_key_name}' et '{yes_key_name}.'"]
 
     csv_headers = ['id_candidate', 'no_trial', 'wrong_yes', 'level', 'ans_candidate',
                    'good_ans', 'reaction_time', 'time_stamp']
@@ -54,7 +54,7 @@ class SevenDiff(TaskTemplate):
             self.create_visual_image(image=f'img/img_{no_trial}_{j}.png', size=size(no_trial, j)).draw()
             self.win.flip()
             core.wait(8)
-            self.create_visual_text("Voyez-vous une différence entre ces deux images ? \n\n Non / Oui").draw()
+            self.create_visual_text("Voyez-vous une ou plusieurs différences entre ces deux images ? \n\n Non / Oui").draw()
             self.win.flip()
             resp, rt = self.get_response_with_time()
             self.update_csv(self.participant, no_trial, wrong_yes, j, resp, j == 0, round(rt, 2),
