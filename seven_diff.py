@@ -77,6 +77,5 @@ class SevenDiff(TaskTemplate):
             core.wait(300)
 
 
-
 exp = SevenDiff(csv_folder="csv")
 exp.start()
