@@ -69,6 +69,9 @@ class SevenDiff(TaskTemplate):
                 if j == 0:
                     result = 1  # ggs
                 break
+        if no_trial == 50 or no_trial == 75:
+            self.create_visual_text("Pause").draw()
+            core.wait(600)
 
 
 exp = SevenDiff(csv_folder="csv")
