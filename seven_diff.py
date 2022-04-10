@@ -40,35 +40,42 @@ class SevenDiff(TaskTemplate):
     instructions = [
         f"Dans cette tâche cognitive, il vous est demandé de repérer les différences entre deux images. \n\n Appuyez sur la touche '{yes_key_name}' pour répondre oui ou pour selectionner la réponse "
         f"de droite. \n\n Appuyez sur la touche '{no_key_name}' pour répondre non ou pour selectionner la réponse de "
-        f"gauche.", "N'appuyez sur les touches que lorsqu'on vous le demande.",f"Placez vos index sur les touches '{no_key_name}' et '{yes_key_name}.'"]
+        f"gauche.", "N'appuyez sur les touches que lorsqu'on vous le demande.",
+        f"Placez vos index sur les touches '{no_key_name}' et '{yes_key_name}.'"]
 
     csv_headers = ['id_candidate', 'no_trial', 'wrong_yes', 'level', 'ans_candidate',
-                   'good_ans', 'reaction_time', 'time_stamp']
+                   'good_ans', 'result', 'reaction_time', 'time_stamp']
 
     def task(self, no_trial, exp_start_timestamp, trial_start_timestamp, practice=False, count_image=1):
         wrong_yes = 0
         j = get_nb_diff(no_trial)
-        print(j)
         result = 0
         while True:
             self.create_visual_image(image=f'img/img_{no_trial}_{j}.png', size=size(no_trial, j)).draw()
             self.win.flip()
-            core.wait(8)
-            self.create_visual_text("Voyez-vous une ou plusieurs différences entre ces deux images ? \n\n Non / Oui").draw()
+            core.wait(8)  # do not forget to put 8 seconds
+            self.create_visual_text(
+                "Voyez-vous une ou plusieurs différences entre ces deux images ? \n\n Non / Oui").draw()
             self.win.flip()
             resp, rt = self.get_response_with_time()
-            self.update_csv(self.participant, no_trial, wrong_yes, j, resp, j == 0, round(rt, 2),
-                            round(time.time() - exp_start_timestamp, 2))
-            if resp == self.yes_key_code and j == 0:
-                if result == 1:
+            if resp == self.yes_key_code:
+                if j == 0:
                     wrong_yes += 1
-                continue
-            elif resp == self.yes_key_code and j > 0:
-                j -= 1
+                    self.update_csv(self.participant, no_trial, wrong_yes, j, resp, ['a' if j == 0 else 'p'][0], result,
+                                    round(rt, 2), round(time.time() - exp_start_timestamp, 2))
+                    continue
+                elif j > 0:
+                    self.update_csv(self.participant, no_trial, wrong_yes, j, resp, ['a' if j == 0 else 'p'][0], result,
+                                    round(rt, 2), round(time.time() - exp_start_timestamp, 2))
+                    j -= 1
+
             elif resp == self.no_key_code:
                 if j == 0:
-                    result = 1  # ggs
+                    result = 1
+                self.update_csv(self.participant, no_trial, wrong_yes, j, resp, ['a' if j == 0 else 'p'][0], result,
+                                round(rt, 2), round(time.time() - exp_start_timestamp, 2))
                 break
+
         if no_trial == 50:
             self.create_visual_text("Pause").draw()
             core.wait(600)
