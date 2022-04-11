@@ -39,9 +39,9 @@ class SevenDiff(TaskTemplate):
 
     instructions = [
         f"Dans cette tâche cognitive, il vous est demandé de repérer les différences entre deux images. \n\n Appuyez sur la touche '{yes_key_name}' pour répondre oui ou pour selectionner la réponse "
-        f"de droite. Appuyez sur la touche '{no_key_name}' pour répondre non ou pour selectionner la réponse de "
-        f"gauche.", "N'appuyez sur les touches que lorsqu'on vous le demande.",
-        f"Placez vos index sur les touches '{no_key_name}' et '{yes_key_name}.'"]
+        f"de droite. \n\n Appuyez sur la touche '{no_key_name}' pour répondre non ou pour selectionner la réponse de "
+        f"gauche.", f"Placez vos index sur les touches '{no_key_name}' et '{yes_key_name}.'"]
+    font_size_instr = 0.05
 
     csv_headers = ['id_candidate', 'no_trial', 'wrong_yes', 'level', 'ans_candidate',
                    'good_ans', 'result', 'reaction_time', 'time_stamp']
