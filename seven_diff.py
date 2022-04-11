@@ -1,8 +1,10 @@
-import time, os
+import os
+import time
 
 from PIL import Image
-from psychopy import visual, gui, data, core
+from psychopy import core
 from screeninfo import get_monitors
+
 from task_template import TaskTemplate
 
 
@@ -53,7 +55,7 @@ class SevenDiff(TaskTemplate):
         while True:
             self.create_visual_image(image=f'img/img_{no_trial}_{j}.png', size=size(no_trial, j)).draw()
             self.win.flip()
-            core.wait(8)  # do not forget to put 8 seconds
+            core.wait(.1)  # do not forget to put 8 seconds
             self.create_visual_text(
                 "Voyez-vous une ou plusieurs différences entre ces deux images ? \n\n Non / Oui").draw()
             self.win.flip()
