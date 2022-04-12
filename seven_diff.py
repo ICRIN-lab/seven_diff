@@ -53,10 +53,14 @@ class SevenDiff(TaskTemplate):
         wrong_yes = 0
         j = get_nb_diff(no_trial)
         result = 0
+        if no_trial <= 50:
+            waiting_time = 6
+        else:
+            waiting_time = 4
         while True:
             self.create_visual_image(image=f'img/img_{no_trial}_{j}.png', size=size(no_trial, j)).draw()
             self.win.flip()
-            core.wait(5)
+            core.wait(waiting_time)
             self.create_visual_text(
                 "Voyez-vous une ou plusieurs différences entre ces deux images ? \n\n Non / Oui").draw()
             self.win.flip()
@@ -78,6 +82,21 @@ class SevenDiff(TaskTemplate):
                 self.update_csv(self.participant, no_trial, wrong_yes, j, resp, ['a' if j == 0 else 'p'][0], result,
                                 round(rt, 2), round(time.time() - exp_start_timestamp, 2))
                 break
+        if no_trial == 50:
+            self.create_visual_text("10 minutes de pause").draw()
+            self.win.flip()
+            core.wait(540)
+            self.create_visual_text("Plus qu'une minute !").draw()
+            self.win.flip()
+            core.wait(60)
+
+        elif no_trial == 75:
+            self.create_visual_text("5 minutes de pause").draw()
+            self.win.flip()
+            core.wait(240)
+            self.create_visual_text("Plus qu'une minute !").draw()
+            self.win.flip()
+            core.wait(60)
 
 
 exp = SevenDiff(csv_folder="csv")
