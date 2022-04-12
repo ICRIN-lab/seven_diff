@@ -1,0 +1,11 @@
+id_candidate, no_trial, wrong_yes, level, ans_candidate, good_ans, result, reaction_time, time_stamp
+Test, 0, 0, 3, p, p, 0, 0.44, 5.65
+Test, 0, 0, 2, p, p, 0, 0.27, 6.43
+Test, 0, 0, 1, p, p, 0, 0.12, 7.06
+Test, 0, 1, 0, p, a, 0, 0.14, 7.71
+Test, 0, 1, 0, a, a, 1, 0.14, 8.35
+Test, 1, 0, 2, a, p, 0, 0.48, 9.17
+Test, 2, 0, 1, p, p, 0, 0.16, 9.73
+Test, 2, 1, 0, p, a, 0, 0.21, 10.33
+Test, 2, 2, 0, p, a, 0, 0.14, 10.86
+Test, 2, 3, 0, p, a, 0, 0.32, 11.56
