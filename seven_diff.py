@@ -40,7 +40,8 @@ class SevenDiff(TaskTemplate):
     next = f"Pour passer à l'instruction suivante, appuyez sur la touche {yes_key_name}"
 
     instructions = [
-        f"Dans cette tâche cognitive, il vous est demandé de repérer les différences entre deux images. \n\n Appuyez sur la touche '{yes_key_name}' pour répondre oui ou pour selectionner la réponse "
+        f"Dans cette tâche cognitive, il vous est demandé de repérer les différences entre deux images. \n\n Appuyez "
+        f"sur la touche '{yes_key_name}' pour répondre oui ou pour selectionner la réponse "
         f"de droite. \n\n Appuyez sur la touche '{no_key_name}' pour répondre non ou pour selectionner la réponse de "
         f"gauche.", f"Placez vos index sur les touches '{no_key_name}' et '{yes_key_name}.'"]
     font_size_instr = 0.05
@@ -55,7 +56,7 @@ class SevenDiff(TaskTemplate):
         while True:
             self.create_visual_image(image=f'img/img_{no_trial}_{j}.png', size=size(no_trial, j)).draw()
             self.win.flip()
-            core.wait(.1)  # do not forget to put 8 seconds
+            core.wait(5)
             self.create_visual_text(
                 "Voyez-vous une ou plusieurs différences entre ces deux images ? \n\n Non / Oui").draw()
             self.win.flip()
@@ -77,13 +78,6 @@ class SevenDiff(TaskTemplate):
                 self.update_csv(self.participant, no_trial, wrong_yes, j, resp, ['a' if j == 0 else 'p'][0], result,
                                 round(rt, 2), round(time.time() - exp_start_timestamp, 2))
                 break
-
-        if no_trial == 50:
-            self.create_visual_text("Pause").draw()
-            core.wait(600)
-        elif no_trial == 75:
-            self.create_visual_text("Pause").draw()
-            core.wait(300)
 
 
 exp = SevenDiff(csv_folder="csv")
