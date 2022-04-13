@@ -47,9 +47,9 @@ class SevenDiff(TaskTemplate):
             result = 0
         self.update_csv(self.participant, no_trial, images[0][-5], resp, good_ans, result,
                         round(rt, 2), round(time.time() - exp_start_timestamp, 2))
-        images.pop(0)
+        images.pop(0) # index out of range, il faut agrandir la liste_images
         print(images)
-        self.check_break(no_trial, 94)
+        self.check_break(no_trial, 95, 259)
 
 
 exp = SevenDiff(csv_folder="csv")
