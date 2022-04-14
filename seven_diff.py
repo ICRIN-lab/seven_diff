@@ -5,7 +5,7 @@ from task_template import TaskTemplate
 
 
 class SevenDiff(TaskTemplate):
-    trials = 144
+    trials = 194
     left_key = "a"
     mid_left_key = "z"
     mid_right_key = "o"

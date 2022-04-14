@@ -6,16 +6,14 @@ calligraphy = []
 chess = []
 
 # create a random list from calligraphy and chess separately
-'''for elt in os.listdir('temp/'):
-    if 50 <= int(elt[4:4 + elt[4:].find("_")]) <= 75:
-        calligraphy.append(elt)
-    elif int(elt[4:4 + elt[4:].find("_")]) >= 76:
-        chess.append(elt)
+for elt in os.listdir('../chess_differences/Chess_PNG/'):
+    chess.append(elt)
 print(calligraphy)
-print(chess)'''
+print(chess)
+print(len(chess))
 
 # rename pictures
-for elt in L:
+'''for elt in L:
     if elt[4:6] != "10":  # to make sure we are not facing a three digits number
         new_elt = elt[0:4] + str(int(elt[4:6]) - 1) + elt[6:]
     else:
@@ -23,3 +21,4 @@ for elt in L:
         new_elt = elt[0:4] + str(int(elt[4:7]) - 1) + elt[7:]
         print(new_elt)
     os.rename('temp/' + elt, 'temp/' + new_elt)
+'''
