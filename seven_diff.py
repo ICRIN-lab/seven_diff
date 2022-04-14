@@ -5,7 +5,7 @@ from task_template import TaskTemplate
 
 
 class SevenDiff(TaskTemplate):
-    trials = 100
+    trials = 144
     left_key = "a"
     mid_left_key = "z"
     mid_right_key = "o"
@@ -27,8 +27,14 @@ class SevenDiff(TaskTemplate):
                    'good_ans', 'result', 'reaction_time', 'time_stamp']
 
     def task(self, no_trial, exp_start_timestamp, trial_start_timestamp, practice=False, count_image=1):
-        self.create_visual_image(image=f'img/{images[0]}',
-                                 size=self.size(images[0])).draw()
+        if no_trial <= 94:
+            group = 0
+        elif 95 <= no_trial <= 144:
+            group = 1
+        else:
+            group = 2
+        self.create_visual_image(image=f'img/{images[group][0]}',
+                                 size=self.size(images[group][0])).draw()
         self.win.flip()
         core.wait([.1 if no_trial <= 50 else .5][0])
         self.create_visual_text(
@@ -37,23 +43,22 @@ class SevenDiff(TaskTemplate):
         self.create_visual_text("2 \t\t/\t\t 3+", pos=(.6, -.4)).draw()
         self.win.flip()
         resp, rt = self.get_response_with_time()
-        good_ans = self.get_good_ans(images[0][-5], {"0": self.left_key,
-                                                     "1": self.mid_left_key,
-                                                     "2": self.mid_right_key,
-                                                     "3": self.right_key,
-                                                     "4": self.right_key,
-                                                     "5": self.right_key,
-                                                     "6": self.right_key,
-                                                     })
+        good_ans = self.get_good_ans(images[group][0][-5], {"0": self.left_key,
+                                                            "1": self.mid_left_key,
+                                                            "2": self.mid_right_key,
+                                                            "3": self.right_key,
+                                                            "4": self.right_key,
+                                                            "5": self.right_key,
+                                                            "6": self.right_key,
+                                                            })
         if resp == good_ans:
             result = 1
         else:
             result = 0
-        self.update_csv(self.participant, no_trial, images[0][-5], resp, good_ans, result,
+        self.update_csv(self.participant, no_trial, images[group][0][-5], resp, good_ans, result,
                         round(rt, 2), round(time.time() - exp_start_timestamp, 2))
-        images.pop(0)  # index out of range, il faut agrandir la liste_images
-        print(images)
-        self.check_break(no_trial, 95, 259)
+        images[group].pop(0)
+        self.check_break(no_trial, 94, 144)
 
 
 exp = SevenDiff(csv_folder="csv")
