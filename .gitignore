@@ -1,6 +1,14 @@
+#random folders and files
+
 .idea
-task_template.py
+__pycache__/
 .DS_Store
 img/.DS_Store
-__pycache__/
+
+# template & csv files
+task_template.py
+rename_images.py
 csv/*.csv
+
+#virtual environment
+venv/

@@ -1,102 +1,64 @@
-import os
 import time
-
-from PIL import Image
+from list_images import images
 from psychopy import core
-from screeninfo import get_monitors
-
 from task_template import TaskTemplate
 
 
-def size(no_trial, j):
-    image = Image.open(f'img/img_{no_trial}_{j}.png')
-    imgwidth, imgheight = image.size
-
-    if imgwidth > get_monitors()[0].width:
-        while imgwidth > get_monitors()[0].width:
-            imgwidth = imgwidth * 0.9
-            imgheight = imgheight * 0.9
-    if imgheight > get_monitors()[0].height:
-        while imgheight > get_monitors()[0].height:
-            imgwidth = imgwidth * 0.9
-            imgheight = imgheight * 0.9
-
-    return imgwidth, imgheight
-
-
-def get_nb_diff(no_trial):
-    return len([filename for filename in os.listdir('img') if filename.startswith(f"img_{no_trial}_")]) - 1
-
-
 class SevenDiff(TaskTemplate):
-    trials = 100
-    yes_key_name = "p"
-    yes_key_code = "p"
-    no_key_code = "a"
-    no_key_name = "a"
+    trials = 144
+    left_key = "a"
+    mid_left_key = "z"
+    mid_right_key = "o"
+    right_key = "p"
     quit_code = "q"
-    keys = ["space", yes_key_name, no_key_name, quit_code]
+    yes_key_code = "p"
+    keys = ["space", left_key, mid_left_key, right_key, mid_right_key, quit_code]
 
-    next = f"Pour passer à l'instruction suivante, appuyez sur la touche {yes_key_name}"
+    next = f"Pour passer à l'instruction suivante, appuyez sur la touche {yes_key_code}"
 
     instructions = [
-        f"Dans cette tâche cognitive, il vous est demandé de repérer les différences entre deux images. \n\n Appuyez "
-        f"sur la touche '{yes_key_name}' pour répondre oui ou pour selectionner la réponse "
-        f"de droite. \n\n Appuyez sur la touche '{no_key_name}' pour répondre non ou pour selectionner la réponse de "
-        f"gauche.", f"Placez vos index sur les touches '{no_key_name}' et '{yes_key_name}.'"]
+        f"Dans cette expérience, il vous est demandé de repérer les différences entre deux images. \n\n Appuyez "
+        f"sur la touche '{right_key}' pour répondre oui ou pour selectionner la réponse "
+        f"de droite. \n\n Appuyez sur la touche '{left_key}' pour répondre non ou pour selectionner la réponse de "
+        f"gauche.", f"Placez vos index sur les touches '{left_key}' et '{right_key}.'"]  # à reformuler
     font_size_instr = 0.05
 
-    csv_headers = ['id_candidate', 'no_trial', 'wrong_yes', 'level', 'ans_candidate',
+    csv_headers = ['id_candidate', 'no_trial', 'nb_diff', 'ans_candidate',
                    'good_ans', 'result', 'reaction_time', 'time_stamp']
 
     def task(self, no_trial, exp_start_timestamp, trial_start_timestamp, practice=False, count_image=1):
-        wrong_yes = 0
-        j = get_nb_diff(no_trial)
-        result = 0
-        if no_trial <= 50:
-            waiting_time = 6
+        if no_trial <= 94:
+            group = 0
+        elif 95 <= no_trial <= 144:
+            group = 1
         else:
-            waiting_time = 4
-        while True:
-            self.create_visual_image(image=f'img/img_{no_trial}_{j}.png', size=size(no_trial, j)).draw()
-            self.win.flip()
-            core.wait(waiting_time)
-            self.create_visual_text(
-                "Voyez-vous une ou plusieurs différences entre ces deux images ? \n\n Non / Oui").draw()
-            self.win.flip()
-            resp, rt = self.get_response_with_time()
-            if resp == self.yes_key_code:
-                if j == 0:
-                    wrong_yes += 1
-                    self.update_csv(self.participant, no_trial, wrong_yes, j, resp, ['a' if j == 0 else 'p'][0], result,
-                                    round(rt, 2), round(time.time() - exp_start_timestamp, 2))
-                    continue
-                elif j > 0:
-                    self.update_csv(self.participant, no_trial, wrong_yes, j, resp, ['a' if j == 0 else 'p'][0], result,
-                                    round(rt, 2), round(time.time() - exp_start_timestamp, 2))
-                    j -= 1
-
-            elif resp == self.no_key_code:
-                if j == 0:
-                    result = 1
-                self.update_csv(self.participant, no_trial, wrong_yes, j, resp, ['a' if j == 0 else 'p'][0], result,
-                                round(rt, 2), round(time.time() - exp_start_timestamp, 2))
-                break
-        if no_trial == 50:
-            self.create_visual_text("10 minutes de pause").draw()
-            self.win.flip()
-            core.wait(540)
-            self.create_visual_text("Plus qu'une minute !").draw()
-            self.win.flip()
-            core.wait(60)
-
-        elif no_trial == 75:
-            self.create_visual_text("5 minutes de pause").draw()
-            self.win.flip()
-            core.wait(240)
-            self.create_visual_text("Plus qu'une minute !").draw()
-            self.win.flip()
-            core.wait(60)
+            group = 2
+        self.create_visual_image(image=f'img/{images[group][0]}',
+                                 size=self.size(images[group][0])).draw()
+        self.win.flip()
+        core.wait([.1 if no_trial <= 50 else .5][0])
+        self.create_visual_text(
+            "Combien voyez-vous de différences entre ces deux images ?").draw()
+        self.create_visual_text("0 \t\t/\t\t 1", pos=(-.6, -.4)).draw()
+        self.create_visual_text("2 \t\t/\t\t 3+", pos=(.6, -.4)).draw()
+        self.win.flip()
+        resp, rt = self.get_response_with_time()
+        good_ans = self.get_good_ans(images[group][0][-5], {"0": self.left_key,
+                                                            "1": self.mid_left_key,
+                                                            "2": self.mid_right_key,
+                                                            "3": self.right_key,
+                                                            "4": self.right_key,
+                                                            "5": self.right_key,
+                                                            "6": self.right_key,
+                                                            })
+        if resp == good_ans:
+            result = 1
+        else:
+            result = 0
+        self.update_csv(self.participant, no_trial, images[group][0][-5], resp, good_ans, result,
+                        round(rt, 2), round(time.time() - exp_start_timestamp, 2))
+        images[group].pop(0)
+        self.check_break(no_trial, 94, 144)
 
 
 exp = SevenDiff(csv_folder="csv")
