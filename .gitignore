@@ -5,3 +5,4 @@ img/.DS_Store
 __pycache__/
 csv/*.csv
 rename_images.py
+venv/
