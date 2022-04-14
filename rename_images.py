@@ -1,27 +1,21 @@
 import os
 
-L = ['img_51_1.png', 'img_51_6.png', 'img_52_1.png', 'img_52_3.png', 'img_53_1.png', 'img_53_6.png', 'img_54_3.png',
-     'img_54_6.png', 'img_55_2.png', 'img_55_5.png', 'img_56_2.png', 'img_56_5.png', 'img_57_1.png', 'img_57_6.png',
-     'img_58_3.png', 'img_58_4.png', 'img_59_2.png', 'img_59_5.png', 'img_60_3.png', 'img_60_4.png', 'img_61_3.png',
-     'img_61_4.png', 'img_62_3.png', 'img_62_4.png', 'img_63_2.png', 'img_63_5.png', 'img_64_1.png', 'img_64_5.png',
-     'img_65_0.png', 'img_65_6.png', 'img_66_0.png', 'img_66_4.png', 'img_67_2.png', 'img_67_3.png', 'img_68_0.png',
-     'img_68_3.png', 'img_69_2.png', 'img_69_4.png', 'img_70_0.png', 'img_70_1.png', 'img_71_1.png', 'img_71_3.png',
-     'img_72_1.png', 'img_72_2.png', 'img_73_0.png', 'img_73_2.png', 'img_74_0.png', 'img_74_1.png', 'img_75_1.png',
-     'img_75_3.png']
+L = ['img_76_5.png', 'img_96_0.png', 'img_94_0.png', 'img_90_4.png', 'img_89_4.png', 'img_94_5.png', 'img_89_0.png', 'img_90_0.png', 'img_92_0.png', 'img_92_1.png', 'img_96_5.png', 'img_76_0.png', 'img_97_3.png', 'img_95_3.png', 'img_97_1.png', 'img_77_5.png', 'img_95_2.png', 'img_91_6.png', 'img_93_0.png', 'img_88_3.png', 'img_88_2.png', 'img_100_6.png', 'img_100_4.png', 'img_93_3.png', 'img_77_3.png', 'img_91_0.png', 'img_84_1.png', 'img_80_4.png', 'img_84_2.png', 'img_82_5.png', 'img_86_5.png', 'img_99_2.png', 'img_79_6.png', 'img_82_0.png', 'img_80_0.png', 'img_86_6.png', 'img_79_5.png', 'img_99_0.png', 'img_85_2.png', 'img_87_0.png', 'img_78_3.png', 'img_87_3.png', 'img_81_4.png', 'img_98_5.png', 'img_98_1.png', 'img_83_3.png', 'img_81_1.png', 'img_83_0.png', 'img_78_6.png', 'img_85_6.png']
+print(len(L))
 calligraphy = []
 chess = []
 
 # create a random list from calligraphy and chess separately
-for elt in os.listdir('img/'):
+'''for elt in os.listdir('temp/'):
     if 50 <= int(elt[4:4 + elt[4:].find("_")]) <= 75:
         calligraphy.append(elt)
     elif int(elt[4:4 + elt[4:].find("_")]) >= 76:
         chess.append(elt)
 print(calligraphy)
-print(chess)
+print(chess)'''
 
 # rename pictures
-'''for elt in L:
+for elt in L:
     if elt[4:6] != "10":  # to make sure we are not facing a three digits number
         new_elt = elt[0:4] + str(int(elt[4:6]) - 1) + elt[6:]
     else:
@@ -29,4 +23,3 @@ print(chess)
         new_elt = elt[0:4] + str(int(elt[4:7]) - 1) + elt[7:]
         print(new_elt)
     os.rename('temp/' + elt, 'temp/' + new_elt)
-'''
