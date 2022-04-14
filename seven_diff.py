@@ -36,7 +36,7 @@ class SevenDiff(TaskTemplate):
         self.create_visual_image(image=f'img/{images[group][0]}',
                                  size=self.size(images[group][0])).draw()
         self.win.flip()
-        core.wait([.1 if no_trial <= 50 else .5][0])
+        core.wait([8 if no_trial <= 94 else 6][0])
         self.create_visual_text(
             "Combien voyez-vous de différences entre ces deux images ?").draw()
         self.create_visual_text("0 \t\t/\t\t 1", pos=(-.6, -.4)).draw()
