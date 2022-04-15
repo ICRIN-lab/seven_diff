@@ -1,5 +1,3 @@
-import os
-
 images = [
     ['img_9_1.png', 'img_11_3.png', 'img_37_0.png', 'img_15_6.png', 'img_15_4.png', 'img_35_1.png', 'img_13_2.png',
      'img_28_4.png', 'img_35_0.png', 'img_49_4.png', 'img_37_2.png', 'img_31_4.png', 'img_33_2.png',
@@ -40,5 +38,4 @@ images = [
      'img_79_4.png', 'img_80_1.png', 'img_82_3.png', 'img_87_3.png', 'img_81_5.png', 'img_87_2.png', 'img_81_0.png',
      'img_83_2.png', 'img_78_5.png', 'img_98_0.png', 'img_85_5.png', 'img_98_2.png', 'img_83_1.png', 'img_78_6.png',
      'img_85_6.png']
-
 ]
