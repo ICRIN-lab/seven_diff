@@ -8,6 +8,7 @@ img/.DS_Store
 # template & csv files
 task_template.py
 rename_images.py
+test_cedrus.py
 csv/*.csv
 
 #virtual environment
