@@ -7,7 +7,7 @@ from Template_Task_Psychopy.task_template import TaskTemplate
 
 class SevenDiff(TaskTemplate):
     # IMPORTANT ! To MODIFY IF NEEDED
-    nb_ans = 2
+    nb_ans = 4
     response_pad = True  # has to be set on "True" on production.
     # END OF IMPORTANT
     left_key_name = "jaune"
@@ -28,9 +28,8 @@ class SevenDiff(TaskTemplate):
     # IMPORTANT : REWRITE INSTRUCTIONS
     instructions = [
         f"Dans cette expérience, il vous est demandé de repérer les différences entre deux images. \n\n Appuyez "
-        f"sur la touche '{right_key_name}' pour répondre oui ou pour selectionner la réponse "
-        f"de droite. \n\n Appuyez sur la touche '{left_key_name}' pour répondre non ou pour selectionner la réponse de "
-        f"gauche.", f"Placez vos index sur les touches '{left_key_name}' et '{right_key_name}.'"]  # à reformuler
+        f"sur la touche correspondant au nombre de différences que vous voyez sur l'image",
+        "Les propositions de réponses sont : \n 0, 1, 2 ou 3+", f"Placez vos doigts sur les touches du clavier colorées."]
     font_size_instr = 0.05
 
     csv_headers = ['id_candidate', 'no_trial', 'nb_diff', 'ans_candidate',
@@ -54,7 +53,6 @@ class SevenDiff(TaskTemplate):
         self.win.flip()
         time_stamp = time.time() - exp_start_timestamp
         resp, rt = self.get_response_with_time(self.response_pad)
-
         good_ans = self.get_good_ans(images[group][0][-5], {"0": self.left_key_code,
                                                             "1": self.mid_left_key_code,
                                                             "2": self.mid_right_key_code,
