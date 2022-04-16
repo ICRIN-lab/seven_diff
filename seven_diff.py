@@ -7,22 +7,23 @@ from Template_Task_Psychopy.task_template import TaskTemplate
 
 class SevenDiff(TaskTemplate):
     # IMPORTANT ! To MODIFY IF NEEDED
-    nb_ans = 4
-    response_pad = False  # has to be set on "True" on production.
+    nb_ans = 2
+    response_pad = True  # has to be set on "True" on production.
     # END OF IMPORTANT
-    left_key_name = "a"
+    left_key_name = "jaune"
     left_key_code = "0"
-    mid_left_key_name = "z"
+    mid_left_key_name = "bleue"
     mid_left_key_code = "1"
-    mid_right_key_name = "o"
+    mid_right_key_name = "verte"
     mid_right_key_code = "5"
-    right_key_name = "p"
+    right_key_name = "rouge"
     right_key_code = "6"
     quit_code = "3"
     yes_key_code = "6"
+    yes_key_name = "verte"
     keys = [left_key_code, mid_left_key_code, right_key_code, mid_right_key_code, yes_key_code, quit_code]
-    trials = 194 # SHOULD BE SET TO 200 WHEN JEANNE DO THE WORK
-    next = f"Pour passer à l'instruction suivante, appuyez sur la touche {yes_key_code}"
+    trials = 194  # SHOULD BE SET TO 200 WHEN JEANNE DO THE WORK
+    next = f"Pour passer à l'instruction suivante, appuyez sur la touche {yes_key_name}"
 
     # IMPORTANT : REWRITE INSTRUCTIONS
     instructions = [
