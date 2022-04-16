@@ -6,9 +6,10 @@ from Template_Task_Psychopy.task_template import TaskTemplate
 
 
 class SevenDiff(TaskTemplate):
-    trials = 194
+    # IMPORTANT ! To MODIFY IF NEEDED
     nb_ans = 4
-    response_pad = False
+    response_pad = False  # has to be set on "True" on production.
+    # END OF IMPORTANT
     left_key_name = "a"
     left_key_code = "0"
     mid_left_key_name = "z"
@@ -20,23 +21,21 @@ class SevenDiff(TaskTemplate):
     quit_code = "3"
     yes_key_code = "6"
     keys = [left_key_code, mid_left_key_code, right_key_code, mid_right_key_code, yes_key_code, quit_code]
-
+    trials = 194 # SHOULD BE SET TO 200 WHEN JEANNE DO THE WORK
     next = f"Pour passer à l'instruction suivante, appuyez sur la touche {yes_key_code}"
 
+    # IMPORTANT : REWRITE INSTRUCTIONS
     instructions = [
         f"Dans cette expérience, il vous est demandé de repérer les différences entre deux images. \n\n Appuyez "
-        f"sur la touche '{right_key_code}' pour répondre oui ou pour selectionner la réponse "
-        f"de droite. \n\n Appuyez sur la touche '{left_key_code}' pour répondre non ou pour selectionner la réponse de "
-        f"gauche.", f"Placez vos index sur les touches '{left_key_code}' et '{right_key_code}.'"]  # à reformuler
+        f"sur la touche '{right_key_name}' pour répondre oui ou pour selectionner la réponse "
+        f"de droite. \n\n Appuyez sur la touche '{left_key_name}' pour répondre non ou pour selectionner la réponse de "
+        f"gauche.", f"Placez vos index sur les touches '{left_key_name}' et '{right_key_name}.'"]  # à reformuler
     font_size_instr = 0.05
 
     csv_headers = ['id_candidate', 'no_trial', 'nb_diff', 'ans_candidate',
                    'good_ans', 'result', 'reaction_time', 'time_stamp']
 
     def task(self, no_trial, exp_start_timestamp, trial_start_timestamp, practice=False, count_image=1):
-        abs_time = 0
-        time_stamp = 0
-        rt = 0
         if no_trial <= 94:
             group = 0
         elif 95 <= no_trial <= 144:
@@ -52,12 +51,9 @@ class SevenDiff(TaskTemplate):
         self.create_visual_text("0 \t\t/\t\t 1", pos=(-.6, -.4)).draw()
         self.create_visual_text("2 \t\t/\t\t 3+", pos=(.6, -.4)).draw()
         self.win.flip()
-        if self.response_pad:
-            time_stamp = time.time() - exp_start_timestamp
-            resp, abs_time = self.get_response_with_time_response_pad(self.dev)
-            print(resp, abs_time)
-        else:
-            resp, rt = self.get_response_with_time()
+        time_stamp = time.time() - exp_start_timestamp
+        resp, rt = self.get_response_with_time(self.response_pad)
+
         good_ans = self.get_good_ans(images[group][0][-5], {"0": self.left_key_code,
                                                             "1": self.mid_left_key_code,
                                                             "2": self.mid_right_key_code,
@@ -72,7 +68,7 @@ class SevenDiff(TaskTemplate):
             result = 0
         if self.response_pad:
             self.update_csv(self.participant, no_trial, images[group][0][-5], resp, good_ans, result,
-                            round(abs_time - time_stamp, 2), round(abs_time, 2))
+                            round(rt - time_stamp, 2), round(rt, 2))
         else:
             self.update_csv(self.participant, no_trial, images[group][0][-5], resp, good_ans, result,
                             round(rt, 2), round(time.time() - exp_start_timestamp, 2))
