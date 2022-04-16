@@ -72,7 +72,7 @@ class SevenDiff(TaskTemplate):
             self.update_csv(self.participant, no_trial, images[group][0][-5], resp, good_ans, result,
                             round(rt, 2), round(time.time() - exp_start_timestamp, 2))
         images[group].pop(0)
-        self.check_break(no_trial, 94, 144, test=True)  # put test=True on production
+        self.check_break(no_trial, 94, 144, test=False)  # put test=False on production
 
 
 exp = SevenDiff(csv_folder="csv")
