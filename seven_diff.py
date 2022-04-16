@@ -1,14 +1,14 @@
 import time
 
-import pyxid2 as pyxid2
-
 from list_images import images
 from psychopy import core
-from task_template import TaskTemplate
+from Template_Task_Psychopy.task_template import TaskTemplate
 
 
 class SevenDiff(TaskTemplate):
     trials = 194
+    nb_ans = 4
+    response_pad = False
     left_key_name = "a"
     left_key_code = "0"
     mid_left_key_name = "z"
@@ -34,6 +34,9 @@ class SevenDiff(TaskTemplate):
                    'good_ans', 'result', 'reaction_time', 'time_stamp']
 
     def task(self, no_trial, exp_start_timestamp, trial_start_timestamp, practice=False, count_image=1):
+        abs_time = 0
+        time_stamp = 0
+        rt = 0
         if no_trial <= 94:
             group = 0
         elif 95 <= no_trial <= 144:
@@ -49,9 +52,12 @@ class SevenDiff(TaskTemplate):
         self.create_visual_text("0 \t\t/\t\t 1", pos=(-.6, -.4)).draw()
         self.create_visual_text("2 \t\t/\t\t 3+", pos=(.6, -.4)).draw()
         self.win.flip()
-        time_stamp = time.time() - exp_start_timestamp
-        resp, abs_time = self.get_response_with_time_response_pad(self.dev)
-        print(resp, abs_time)
+        if self.response_pad:
+            time_stamp = time.time() - exp_start_timestamp
+            resp, abs_time = self.get_response_with_time_response_pad(self.dev)
+            print(resp, abs_time)
+        else:
+            resp, rt = self.get_response_with_time()
         good_ans = self.get_good_ans(images[group][0][-5], {"0": self.left_key_code,
                                                             "1": self.mid_left_key_code,
                                                             "2": self.mid_right_key_code,
@@ -64,8 +70,12 @@ class SevenDiff(TaskTemplate):
             result = 1
         else:
             result = 0
-        self.update_csv(self.participant, no_trial, images[group][0][-5], resp, good_ans, result,
-                        round(abs_time - time_stamp, 2), round(abs_time, 2))
+        if self.response_pad:
+            self.update_csv(self.participant, no_trial, images[group][0][-5], resp, good_ans, result,
+                            round(abs_time - time_stamp, 2), round(abs_time, 2))
+        else:
+            self.update_csv(self.participant, no_trial, images[group][0][-5], resp, good_ans, result,
+                            round(rt, 2), round(time.time() - exp_start_timestamp, 2))
         images[group].pop(0)
         self.check_break(no_trial, 94, 144, test=True)
 

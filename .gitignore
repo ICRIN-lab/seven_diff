@@ -1,12 +1,11 @@
 #random folders and files
-
 .idea
 __pycache__/
 .DS_Store
 img/.DS_Store
 
 # template & csv files
-task_template.py
+Template_Task_Psychopy/
 rename_images.py
 test_cedrus.py
 csv/*.csv
