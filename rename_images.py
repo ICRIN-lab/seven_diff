@@ -1,16 +1,19 @@
 import os
 
-L = ['img_76_5.png', 'img_96_0.png', 'img_94_0.png', 'img_90_4.png', 'img_89_4.png', 'img_94_5.png', 'img_89_0.png', 'img_90_0.png', 'img_92_0.png', 'img_92_1.png', 'img_96_5.png', 'img_76_0.png', 'img_97_3.png', 'img_95_3.png', 'img_97_1.png', 'img_77_5.png', 'img_95_2.png', 'img_91_6.png', 'img_93_0.png', 'img_88_3.png', 'img_88_2.png', 'img_100_6.png', 'img_100_4.png', 'img_93_3.png', 'img_77_3.png', 'img_91_0.png', 'img_84_1.png', 'img_80_4.png', 'img_84_2.png', 'img_82_5.png', 'img_86_5.png', 'img_99_2.png', 'img_79_6.png', 'img_82_0.png', 'img_80_0.png', 'img_86_6.png', 'img_79_5.png', 'img_99_0.png', 'img_85_2.png', 'img_87_0.png', 'img_78_3.png', 'img_87_3.png', 'img_81_4.png', 'img_98_5.png', 'img_98_1.png', 'img_83_3.png', 'img_81_1.png', 'img_83_0.png', 'img_78_6.png', 'img_85_6.png']
-print(len(L))
+L = ['img_9_1.png', 'img_17_5.png', 'img_11_3.png', 'img_13_1.png', 'img_13_0.png', 'img_11_2.png', 'img_9_0.png', 'img_15_4.png', 'img_9_2.png', 'img_11_0.png', 'img_13_2.png', 'img_11_1.png', 'img_9_3.png', 'img_15_1.png', 'img_17_3.png', 'img_11_5.png', 'img_17_2.png', 'img_15_0.png', 'img_15_2.png', 'img_17_0.png', 'img_9_4.png', 'img_13_4.png', 'img_13_5.png', 'img_17_1.png', 'img_15_3.png', 'img_10_0.png', 'img_8_2.png', 'img_16_6.png', 'img_14_4.png', 'img_8_3.png', 'img_10_1.png', 'img_12_3.png', 'img_12_1.png', 'img_8_1.png', 'img_16_5.png', 'img_8_0.png', 'img_10_2.png', 'img_12_0.png', 'img_12_4.png', 'img_10_6.png', 'img_16_0.png', 'img_14_2.png', 'img_14_3.png', 'img_8_5.png', 'img_16_1.png', 'img_14_1.png', 'img_14_0.png', 'img_16_2.png', 'img_10_4.png', 'img_12_6.png', 'img_2_0.png', 'img_0_2.png', 'img_18_0.png', 'img_6_4.png', 'img_4_6.png', 'img_18_1.png', 'img_0_3.png', 'img_2_1.png', 'img_2_3.png', 'img_18_2.png', 'img_0_0.png', 'img_2_2.png', 'img_0_4.png', 'img_6_2.png', 'img_4_0.png', 'img_4_1.png', 'img_6_3.png', 'img_0_5.png', 'img_2_5.png', 'img_6_1.png', 'img_18_5.png', 'img_4_3.png', 'img_4_2.png', 'img_18_4.png', 'img_6_0.png', 'img_5_5.png', 'img_1_1.png', 'img_3_3.png', 'img_3_2.png', 'img_1_0.png', 'img_7_6.png', 'img_19_2.png', 'img_5_4.png', 'img_19_0.png', 'img_7_4.png', 'img_1_2.png', 'img_3_0.png', 'img_3_1.png', 'img_1_3.png', 'img_7_5.png', 'img_19_1.png', 'img_5_3.png', 'img_19_5.png', 'img_3_4.png', 'img_1_6.png', 'img_19_4.png', 'img_7_0.png', 'img_5_2.png', 'img_5_0.png', 'img_7_2.png']
+
 calligraphy = []
 chess = []
-
+img = []
 # create a random list from calligraphy and chess separately
-for elt in os.listdir('../chess_differences/Chess_PNG/'):
-    chess.append(elt)
-print(calligraphy)
-print(chess)
-print(len(chess))
+for elt in os.listdir('img/'):
+    print(elt)
+    print(elt[4:elt.find("_", 4)])
+    if 29 < int(elt[4:elt.find("_", 4)]):
+        img.append(elt)
+    print("---------")
+print(img)
+print(len(img))
 
 # rename pictures
 '''for elt in L:
