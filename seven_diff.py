@@ -22,7 +22,7 @@ class SevenDiff(TaskTemplate):
     yes_key_code = "6"
     yes_key_name = "verte"
     keys = [left_key_code, mid_left_key_code, right_key_code, mid_right_key_code, yes_key_code, quit_code]
-    trials = 194  # SHOULD BE SET TO 200 WHEN JEANNE DO THE WORK
+    trials = 200  # SHOULD BE SET TO 200 WHEN JEANNE DO THE WORK
     next = f"Pour passer à l'instruction suivante, appuyez sur la touche {yes_key_name}"
 
     # IMPORTANT : REWRITE INSTRUCTIONS
@@ -37,16 +37,16 @@ class SevenDiff(TaskTemplate):
                    'good_ans', 'result', 'reaction_time', 'time_stamp']
 
     def task(self, no_trial, exp_start_timestamp, trial_start_timestamp, practice=False, count_image=1):
-        if no_trial <= 94:
+        if no_trial < 100:
             group = 0
-        elif 95 <= no_trial <= 144:
+        elif 100 <= no_trial < 150:
             group = 1
         else:
             group = 2
         self.create_visual_image(image=f'img/{images[group][0]}',
                                  size=self.size(images[group][0])).draw()
         self.win.flip()
-        core.wait([.5 if no_trial <= 94 else .5][0])
+        core.wait([7 if no_trial < 100 else 5][0])
         self.create_visual_text(
             "Combien voyez-vous de différences entre ces deux images ?").draw()
         self.create_visual_text("0 \t\t/\t\t 1", pos=(-.6, -.4)).draw()
@@ -73,7 +73,7 @@ class SevenDiff(TaskTemplate):
             self.update_csv(self.participant, no_trial, images[group][0][-5], resp, good_ans, result,
                             round(rt, 2), round(time.time() - exp_start_timestamp, 2))
         images[group].pop(0)
-        self.check_break(no_trial, 94, 144, test=False)  # put test=False on production
+        self.check_break(no_trial, 100, 150, test=False)  # put test=False on production
 
 
 exp = SevenDiff(csv_folder="csv")
