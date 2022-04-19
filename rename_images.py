@@ -9,7 +9,7 @@ img = []
 for elt in os.listdir('img/'):
     print(elt)
     print(elt[4:elt.find("_", 4)])
-    if 30 < int(elt[4:elt.find("_", 4)]):
+    if 30 <= int(elt[4:elt.find("_", 4)]):
         img.append(elt)
     print("---------")
 print(img)

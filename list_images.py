@@ -26,10 +26,13 @@ images = [
     ['img_33_4.png', 'img_31_6.png', 'img_37_0.png', 'img_35_2.png', 'img_37_1.png', 'img_33_5.png', 'img_37_3.png',
      'img_35_0.png', 'img_37_2.png', 'img_31_4.png', 'img_33_2.png', 'img_37_6.png', 'img_35_4.png', 'img_35_5.png',
      'img_31_1.png', 'img_33_1.png', 'img_31_3.png', 'img_35_6.png', 'img_31_2.png', 'img_33_0.png', 'img_32_6.png',
-     'img_36_2.png', 'img_34_0.png', 'img_34_2.png', 'img_36_0.png', 'img_32_5.png', 'img_36_1.png', 'img_34_3.png',
-     'img_32_1.png', 'img_36_4.png', 'img_34_6.png', 'img_34_4.png', 'img_36_6.png', 'img_32_2.png', 'img_32_3.png',
-     'img_38_5.png', 'img_38_4.png', 'img_38_6.png', 'img_38_2.png', 'img_38_0.png', 'img_39_6.png', 'img_39_0.png',
-     'img_39_1.png', 'img_39_3.png', 'img_39_2.png']
+     'img_30_4.png', 'img_36_2.png', 'img_34_0.png', 'img_34_2.png', 'img_36_0.png', 'img_30_6.png', 'img_32_5.png',
+     'img_36_1.png', 'img_34_3.png', 'img_30_3.png', 'img_32_1.png', 'img_36_4.png', 'img_34_6.png', 'img_34_4.png',
+     'img_36_6.png', 'img_30_0.png', 'img_32_2.png', 'img_32_3.png', 'img_30_1.png', 'img_38_5.png', 'img_38_4.png',
+     'img_38_6.png', 'img_38_2.png', 'img_38_0.png', 'img_39_6.png', 'img_39_0.png', 'img_39_1.png', 'img_39_3.png',
+     'img_39_2.png']
+
+
 
 
 ]
