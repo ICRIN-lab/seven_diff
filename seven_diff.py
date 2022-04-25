@@ -30,7 +30,7 @@ class SevenDiff(TaskTemplate):
         f"Dans cette expérience, il vous est demandé de repérer les différences entre deux images. \n\n Appuyez "
         f"sur la touche correspondant au nombre de différences que vous voyez sur l'image",
         "Les propositions de réponses sont : \n 0, 1, 2 ou 3+", "N'appuyez sur les touches colorées que lorsque la question apparaît.",
-        "Placez vos index sur les touches colorées."]
+        "Placez vos doigts sur les touches colorées."]
     font_size_instr = 0.05
 
     csv_headers = ['id_candidate', 'no_trial', 'nb_diff', 'ans_candidate',
