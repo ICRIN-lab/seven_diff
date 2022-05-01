@@ -53,8 +53,8 @@ class SevenDiff(TaskTemplate):
         core.wait([7 if no_trial < 100 else 5][0])
         self.create_visual_text(
             "Combien voyez-vous de différences entre ces deux images ?").draw()
-        self.create_visual_text("0 \t\t/\t\t 1", pos=(-.6, -.4)).draw()
-        self.create_visual_text("2 \t\t/\t\t 3+", pos=(.6, -.4)).draw()
+        self.create_visual_text("0 \t\t /\t\t 1", pos=(-.6, -.4)).draw()
+        self.create_visual_text("2 \t\t /\t\t 3+", pos=(.6, -.4)).draw()
         self.win.flip()
         time_stamp = time.time() - exp_start_timestamp
         resp, rt = self.get_response_with_time(self.response_pad)
