@@ -8,7 +8,7 @@ from Template_Task_Psychopy.task_template import TaskTemplate
 class SevenDiff(TaskTemplate):
     # IMPORTANT ! To MODIFY IF NEEDED
     nb_ans = 4
-    response_pad = True  # has to be set on "True" on production.
+    response_pad = False  # has to be set on "True" on production.
     # END OF IMPORTANT
     left_key_name = "jaune"
     left_key_code = "0"
@@ -38,7 +38,7 @@ class SevenDiff(TaskTemplate):
     csv_headers = ['id_candidate', 'no_trial', 'nb_diff', 'ans_candidate',
                    'good_ans', 'result', 'reaction_time', 'time_stamp']
 
-    def task(self, no_trial, exp_start_timestamp, trial_start_timestamp, practice=False, count_image=1):
+    def task(self, no_trial, trial_start_timestamp, practice=False, count_image=1):
         if no_trial < 100:
             group = 0
         elif 100 <= no_trial < 150:
@@ -81,7 +81,7 @@ class SevenDiff(TaskTemplate):
         if practice:
             return result
 
-    def example(self, exp_start_timestamp):
+    def example(self):
         score_example = 0
         example = self.create_visual_text(text="Commençons par un petit entraînement")
         tutoriel_end = self.create_visual_text(
@@ -90,9 +90,9 @@ class SevenDiff(TaskTemplate):
         example.draw()
         self.create_visual_text(self.next, pos=(0, -0.4), font_size=0.04).draw()
         self.win.flip()
-        self.wait_yes(self.response_pad)
+        self.wait_yes(self.yes_key_code)
         for u in range(3):
-            if self.task(999, exp_start_timestamp, time.time(), True):
+            if self.task(999, time.time(), True):
                 score_example += 1
                 self.create_visual_text(
                     f"Bravo ! Vous avez {score_example}/{u+1}"
@@ -112,6 +112,6 @@ class SevenDiff(TaskTemplate):
         self.win.flip()
         core.wait(5)
 
-
-exp = SevenDiff(csv_folder="csv")
+exp_start_timestamp = time.time()
+exp = SevenDiff("csv", exp_start_timestamp)
 exp.start()
