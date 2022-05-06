@@ -112,6 +112,7 @@ class SevenDiff(TaskTemplate):
         self.win.flip()
         core.wait(5)
 
+
 exp_start_timestamp = time.time()
 exp = SevenDiff("csv", exp_start_timestamp)
 exp.start()
