@@ -1,3 +1,3 @@
-# Seven Difference Task
+# Seven Differences Task
 
 
