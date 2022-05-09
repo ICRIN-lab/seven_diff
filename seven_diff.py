@@ -81,7 +81,7 @@ class SevenDiff(TaskTemplate):
         if practice:
             return result
 
-    def example(self):
+    def example(self, exp_start_timestamp):
         score_example = 0
         example = self.create_visual_text(text="Commençons par un petit entraînement")
         tutoriel_end = self.create_visual_text(
