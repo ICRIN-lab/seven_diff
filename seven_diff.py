@@ -24,6 +24,7 @@ class SevenDiff(TaskTemplate):
     keys = [left_key_code, mid_left_key_code, right_key_code, mid_right_key_code, yes_key_code, quit_code]
     trials = 200  # number of trials
     launch_example = True
+    exp_start_timestamp = time.time()
 
     next = f"Pour passer à l'instruction suivante, appuyez sur la touche {yes_key_name}"
 
@@ -38,7 +39,7 @@ class SevenDiff(TaskTemplate):
     csv_headers = ['id_candidate', 'no_trial', 'nb_diff', 'ans_candidate',
                    'good_ans', 'result', 'reaction_time', 'time_stamp']
 
-    def task(self, no_trial, trial_start_timestamp, practice=False, count_image=1):
+    def task(self, no_trial):
         if no_trial < 100:
             group = 0
         elif 100 <= no_trial < 150:
@@ -56,7 +57,7 @@ class SevenDiff(TaskTemplate):
         self.create_visual_text("0 \t\t /\t\t 1", pos=(-.6, -.4)).draw()
         self.create_visual_text("2 \t\t /\t\t 3+", pos=(.6, -.4)).draw()
         self.win.flip()
-        time_stamp = time.time() - exp_start_timestamp
+        time_stamp = time.time() - self.exp_start_timestamp
         resp, rt = self.get_response_with_time(self.response_pad)
         good_ans = self.get_good_ans(images[group][0][-5], {"0": self.left_key_code,
                                                             "1": self.mid_left_key_code,
@@ -75,13 +76,13 @@ class SevenDiff(TaskTemplate):
                             round(rt - time_stamp, 2), round(rt, 2))
         else:
             self.update_csv(self.participant, no_trial, images[group][0][-5], resp, good_ans, result,
-                            round(rt, 2), round(time.time() - exp_start_timestamp, 2))
+                            round(rt, 2), round(time.time() - self.exp_start_timestamp, 2))
         images[group].pop(0)
         self.check_break(no_trial, 99, 149, test=False)  # put test=False on production
-        if practice:
+        if self.launch_example:
             return result
 
-    def example(self, exp_start_timestamp):
+    def example(self):
         score_example = 0
         example = self.create_visual_text(text="Commençons par un petit entraînement")
         tutoriel_end = self.create_visual_text(
@@ -92,7 +93,7 @@ class SevenDiff(TaskTemplate):
         self.win.flip()
         self.wait_yes(self.yes_key_code)
         for u in range(3):
-            if self.task(999, time.time(), True):
+            if self.task(999):
                 score_example += 1
                 self.create_visual_text(
                     f"Bravo ! Vous avez {score_example}/{u+1}"
@@ -113,6 +114,5 @@ class SevenDiff(TaskTemplate):
         core.wait(5)
 
 
-exp_start_timestamp = time.time()
-exp = SevenDiff("csv", exp_start_timestamp)
+exp = SevenDiff("csv")
 exp.start()
