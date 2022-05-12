@@ -7,7 +7,7 @@ from Template_Task_Psychopy.task_template import TaskTemplate
 class SevenDiff(TaskTemplate):
     # IMPORTANT ! To MODIFY IF NEEDED
     nb_ans = 4
-    response_pad = False  # has to be set on "True" on production.
+    response_pad = True  # has to be set on "True" on production.
     # END OF IMPORTANT
     left_key_name = "jaune"
     left_key_code = "0"
