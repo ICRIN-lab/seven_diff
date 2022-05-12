@@ -9,6 +9,7 @@ Template_Task_Psychopy
 rename_images.py
 test_cedrus.py
 csv/*.csv
+img_example_readme
 
 #virtual environment
 venv/
