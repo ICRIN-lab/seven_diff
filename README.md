@@ -44,9 +44,8 @@ Task Design example
 
 Here is an example of the task. 
 
-<img src="img_example_readme/img_40_2.png" width="500" height="200"/>
-<img src="img_example_readme/question.png" width="500" height="200"/>
-
+![example](img/img_example_readme/7diff_exp_readme.png)
+![example](img/img_example_readme/qst_exp_readme.png)
 
 
 REQUIREMENTS
@@ -63,9 +62,9 @@ from Template_Task_Psychopy.task_template import TaskTemplate
 ```
 In order to import TaskTemplate, here are our recommendations. : 
 
-* First, to run the tasks you will first need to clone Template_Task_Psychopy repository from GitHub : 
+* First, to run the tasks you will first need to clone Template_Task_Psychopy repository from GitHub.
 
-https://github.com/ICRIN-lab/Template_Task_Psychopy.git
+Here's the  <a href="https://github.com/ICRIN-lab/Template_Task_Psychopy.git"> link </a>.
 
 * Then, create a symbolic link locally with Template_Task_Psychopy : 
 
@@ -98,7 +97,7 @@ To contribute, please fork the repository, hack in a feature branch, and send a 
 
 ## More informations 
 
-Homepage: http://icrin.fr/
+Homepage: <a href="http://icrin.fr/"> iCRIN Lab </a>
 
 ## Contact us
 
