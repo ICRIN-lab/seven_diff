@@ -44,9 +44,8 @@ Task Design example
 
 Here is an example of the task. 
 
-<img src="img_example_readme/img_40_2.png" width="500" height="200"/>
-<img src="img_example_readme/question.png" width="500" height="200"/>
-
+![Capture d’écran 2022-05-12 à 12 27 59](https://user-images.githubusercontent.com/92592951/168604434-7adeff19-8608-4412-9086-cb5e1ea9c2e0.png)
+![question](https://user-images.githubusercontent.com/92592951/168604463-033359da-8dda-46a0-8ab0-868af2683f49.png)
 
 
 REQUIREMENTS
