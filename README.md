@@ -24,7 +24,7 @@ In this task, we display two images simultaneously on the screen. We first had t
 There are 4 blocks of 10 original images each, that we have chosen wisely. Each original image is declined in 5 edited versions. 
 Thus, each block contains a total of 50 images. The first block gather images with different valences of an emotional stimuli; while de the second block gathers emotionaly-neutral images. The third block is a set of caligraphy iamges in 5 differents languages :arabic, russian, hebraic, chinese, and tamoul. The fourth block contains images of chessboards with randomly-placed pieces. 
 
-<img src="img_example_readme/blocks.png" width="400" height="400"/>
+![blocks](https://user-images.githubusercontent.com/92592951/168604208-e19e8e00-69e1-4bea-a8c7-a82b4518a2d4.png)
 
 
 All the images are stored in the file "img", and all images are named following this form : img_XX_YY.png
@@ -44,9 +44,8 @@ Task Design example
 
 Here is an example of the task. 
 
-<img src="img_example_readme/img_40_2.png" width="500" height="200"/>
-<img src="img_example_readme/question.png" width="500" height="200"/>
-
+![Capture d’écran 2022-05-12 à 12 27 59](https://user-images.githubusercontent.com/92592951/168604434-7adeff19-8608-4412-9086-cb5e1ea9c2e0.png)
+![question](https://user-images.githubusercontent.com/92592951/168604463-033359da-8dda-46a0-8ab0-868af2683f49.png)
 
 
 REQUIREMENTS
