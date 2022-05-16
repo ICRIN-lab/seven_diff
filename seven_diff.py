@@ -57,7 +57,7 @@ class SevenDiff(TaskTemplate):
         self.create_visual_text("2 \t\t /\t\t 3+", pos=(.6, -.4)).draw()
         self.win.flip()
         time_stamp = time.time() - self.response_pad_timestamp
-        resp, rt = self.get_response_with_time(self.response_pad)
+        resp, rt = self.get_response_with_time()
         good_ans = self.get_good_ans(images[group][0][-5], {"0": self.left_key_code,
                                                             "1": self.mid_left_key_code,
                                                             "2": self.mid_right_key_code,
