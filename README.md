@@ -13,13 +13,14 @@ CONTENTS OF THIS FILE
 
 INTRODUCTION
 ------------
-Our research team is studying differents aspects of psychiatric disorders. Our present project is all about exploring obssessive compulsive disorders'secret gardens. For that matter, we designed original home-made cognitive tasks, fresh out of the oven!
+Our research team is studying different aspects of psychiatric disorders. Our present project is all about exploring obssessive compulsive disorders' secret gardens. For that matter, we have designed original home-made cognitive tasks, fresh out of the oven!
 
 
 Seven Differences Task 
 ------------
 
-In this task, we display two images simultaneously on the screen. We first had to turn our research lab into a Photoshop workshop, in order to edit original images by adding a certain number of differences (1 to 7) on each one of them.
+In case you still haven't figure it out, the aim of the task is to fetch for the differences between two images displayed simultaneously on the screen. 
+We first had to turn our research lab into a Photoshop workshop, in order to edit original images by adding a certain number of differences (1 to 7) on each one of them.
 
 There are 4 blocks of 10 original images each, that we have chosen wisely. Each original image is declined in 5 edited versions. 
 Thus, each block contains a total of 50 images. The first block gather images with different valences of an emotional stimuli; while de the second block gathers emotionaly-neutral images. The third block is a set of caligraphy iamges in 5 differents languages :arabic, russian, hebraic, chinese, and tamoul. The fourth block contains images of chessboards with randomly-placed pieces. 
@@ -32,7 +33,7 @@ All the images are stored in the file "img", and all images are named following 
     * YY in the number of differences 
 Supplementary images ('40','41','42') are used for training, and do not belong to the 4 blocks.
 
-The stimuli is displayed for a 7 seconds for the 100 first trials, and 5 seconds for the last 100 trials. and folowed by the question "Combien voyez-vous de différences entre ces deux images ?" in french ("How many differences have you seen"). 
+The stimuli is displayed for 7 seconds for the 100 first trials, and 5 seconds for the last 100 trials, then followed by the question "Combien voyez-vous de différences entre ces deux images ?" in french ("How many differences have you seen"). 
 The participants have to choose among 4 propositions : 0 / 1 / 2 / 3+ . 
 
 The task starts with instructions written in french, and are suited for use with a "Trackpad". 
@@ -60,9 +61,9 @@ from list_images import images
 from psychopy import core
 from Template_Task_Psychopy.task_template import TaskTemplate
 ```
-In order to import TaskTemplate, here are our recommendations. : 
+In order to import TaskTemplate, here are our recommendations : 
 
-* First, to run the tasks you will first need to clone Template_Task_Psychopy repository from GitHub : 
+* First, to run the tasks you will need to clone Template_Task_Psychopy repository from GitHub : 
 
 https://github.com/ICRIN-lab/Template_Task_Psychopy.git
 
