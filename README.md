@@ -1,5 +1,5 @@
 # Seven Differences Task
-CONTENTS OF THIS FILE
+# CONTENTS OF THIS FILE
 ---------------------
 * Introduction
 * Seven Differences Task 
@@ -11,12 +11,12 @@ CONTENTS OF THIS FILE
 
 
 
-INTRODUCTION
+## INTRODUCTION
 ------------
 Our research team is studying different aspects of psychiatric disorders. Our present project is all about exploring obsessive compulsive disorders' secret gardens. For that matter, we designed original home-made cognitive tasks, fresh out of the oven!
 
 
-Seven Differences Task 
+## Seven Differences Task 
 ------------
 
 In case you still haven't figured it out, the aim of the task is to fetch for the differences between two images displayed simultaneously on the screen. 
@@ -24,7 +24,7 @@ We first had to turn our research lab into a Photoshop workshop, in order to edi
 There are 4 blocks of 10 original images each, that we have chosen wisely. Each original image is declined in 5 edited versions. 
 Thus, each block contains a total of 50 images. The first block gather images with different valences of an emotional stimuli; while de the second block gathers emotionaly-neutral images. The third block is a set of caligraphy iamges in 5 differents languages :arabic, russian, hebraic, chinese, and tamoul. The fourth block contains images of chessboards with randomly-placed pieces. 
 
-![blocks](img_example_readme/blocks.png)
+<img src="img_example_readme/blocks.png" width= "400">
 
 
 All the images are stored in the file "img", and all images are named following this form : img_XX_YY.png
@@ -39,16 +39,16 @@ The task starts with instructions written in french, and are suited for use with
 
 
 
-Task Design example
+## Task Design example
 ------------
 
 Here is an example of the task. 
 
-![example1](img_example_readme/img_40_2.png)
-![example2](img_example_readme/question.png)
+<img src="img_example_readme/img_40_2.png" width= "400">
+<img src="img_example_readme/question.png" width= "400">
 
 
-REQUIREMENTS
+## REQUIREMENTS
 ------------
 ### Imports : 
 
@@ -86,7 +86,7 @@ class SevenDiff(TaskTemplate):
 
 
 
-Contributions
+## Contributions
 ------------
 
 To contribute, please fork the repository, hack in a feature branch, and send a pull request.
